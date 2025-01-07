@@ -12,7 +12,7 @@ export const saveJoke = (newJoke)=>{
         },
         body: JSON.stringify(state)
     }
-fetch("http://localhost:8088/jokes", postOptions)
+return fetch("http://localhost:8088/jokes", postOptions)
 }
 
 export const getJokes = () =>{

@@ -151,6 +151,7 @@ h2 {
     /** Class for the count of untold jokes. Add it to a <span> element within the <h2> for Untold */
     .untold-count {
       color: var(--col-0);
+      
     }
 
     /** Adds styles for both the told-count class and the untold-count class*/
