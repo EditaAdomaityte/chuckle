@@ -157,6 +157,7 @@ h2 {
     /** Adds styles for both the told-count class and the untold-count class*/
     .told-count,
     .untold-count {
+      right:0;
       float: right;
     }
   }

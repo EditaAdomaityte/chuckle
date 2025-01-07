@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import "./App.css"
 import "./index.css"
-import { saveJoke,getJokes } from "./services/jokeService.js"
+import { saveJoke,getJokes,changeJoke, deleteJoke } from "./services/jokeService.js"
 
 
 export const App = () => {
@@ -34,6 +34,18 @@ export const App = () => {
     }
   }
   
+  const handleJokeChange = (joke) =>{
+    
+    changeJoke(joke).then(()=>{
+      getItems()
+    })
+  }
+
+  const handleDeletionJoke = (joke)=>{
+    deleteJoke(joke).then(()=>{
+      getItems()
+    })
+  }
 
 //Filter jokes
   useEffect(() => {
@@ -67,13 +79,17 @@ export const App = () => {
         <button className="joke-input-submit " onClick={handleAddJoke} >Add</button>
     </div>
   <div className="joke-lists-container">
-        <div className="untold-jokes">
+        <div className="joke-list-container">
           <h2>Untold <span className="untold-count">{untoldJokes.length}</span></h2>
         {untoldJokes.map(joke => {
             return (
             <div className="joke-list-container" key={joke.id}>
               <ul className="jokes" >
-                <li className="joke-list-item">{joke.text}</li>
+                <li className="joke-list-item">{joke.text} 
+                <button onClick={()=>handleDeletionJoke(joke)}>🚮</button>
+                <button onClick={()=>handleJokeChange(joke)}>😀</button>
+                </li>
+               
               </ul>
             </div>
           )
@@ -81,13 +97,16 @@ export const App = () => {
         )}
         </div>
         
-        <div className="told-jokes">
+        <div className="joke-list-container">
           <h2>Told <span className="told-count">{toldJokes.length}</span></h2>
         {toldJokes.map(joke => {
             return (
             <div className="joke-list-container" key={joke.id}> 
               <ul className="jokes" >
-                <li className="joke-list-item">{joke.text}</li>
+                <li className="joke-list-item">{joke.text}
+                  <button onClick={()=>handleDeletionJoke(joke)}>🚮</button>
+                  <button onClick={()=>handleJokeChange(joke)}>🤫</button>
+                  </li>
               </ul>
             </div>
           )

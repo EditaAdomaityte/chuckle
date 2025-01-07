@@ -18,3 +18,21 @@ return fetch("http://localhost:8088/jokes", postOptions)
 export const getJokes = () =>{
     return fetch ("http://localhost:8088/jokes").then((response)=>response.json())
 }
+
+export const changeJoke = async(joke)=>{
+    return fetch(`http://localhost:8088/jokes/${joke.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ...joke,
+        told: !joke.told
+      })
+    })
+  }
+
+  export const deleteJoke = async(joke)=>{
+    return fetch(`http://localhost:8088/jokes/${joke.id}`, {
+        method: "DELETE",})
+  }
