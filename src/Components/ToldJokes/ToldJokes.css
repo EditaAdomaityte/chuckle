@@ -1,0 +1,50 @@
+.joke-lists-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  
+    /** Class for a single list container. It should be added to a div that wraps a every element for a single list.*/
+    .joke-list-container {
+      flex-basis: 45%;
+      width: 100%;
+  
+      /** Class for the count of told jokes. Add it to a <span> element within the <h2> for Told */
+      .told-count {
+        color: var(--col-5);
+      }
+  
+      /** Class for the count of untold jokes. Add it to a <span> element within the <h2> for Untold */
+      .untold-count {
+        color: var(--col-0);
+        
+      }
+  
+      /** Adds styles for both the told-count class and the untold-count class*/
+      .told-count,
+      .untold-count {
+        right:0;
+        float: right;
+      }
+    }
+  }
+  
+  /** Class for an individual <li>*/
+  .joke-list-item {
+    border: none;
+    border-bottom: 1px solid hsla(0, 0%, 50%, 0.5);
+    margin: 5px 0;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    /** Class for the joke text. Add it to a <p> element*/
+    .joke-list-item-text {
+      margin: 0;
+      font-size: 0.7rem;
+      flex-basis: 75%;
+    }
+}

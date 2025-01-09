@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 
 import "./App.css"
 import "./index.css"
-import { saveJoke,getJokes,changeJoke, deleteJoke } from "./services/jokeService.js"
+import { saveJoke,getJokes,changeJoke, deleteJoke } from "./services/jokeService.jsx"
+import {ToldJokes} from "./Components/ToldJokes/ToldJokes.jsx"
+import {UntoldJokes} from "./Components/UntoldJokes/UntoldJokes.jsx"
 
 
 export const App = () => {
@@ -81,17 +83,9 @@ export const App = () => {
   <div className="joke-lists-container">
         <div className="joke-list-container">
           <h2>Untold <span className="untold-count">{untoldJokes.length}</span></h2>
-        {untoldJokes.map(joke => {
-            return (
-            <div className="joke-list-container" key={joke.id}>
-              <ul className="jokes" >
-                <li className="joke-list-item">{joke.text} 
-                <button onClick={()=>handleDeletionJoke(joke)}>🚮</button>
-                <button onClick={()=>handleJokeChange(joke)}>😀</button>
-                </li>
-               
-              </ul>
-            </div>
+        {untoldJokes.map(jokeObj => {
+          return (
+            <UntoldJokes key={jokeObj.id} joke={jokeObj} handleJokeChange={handleJokeChange} handleDeletionJoke={handleDeletionJoke}/>
           )
         }
         )}
@@ -99,21 +93,12 @@ export const App = () => {
         
         <div className="joke-list-container">
           <h2>Told <span className="told-count">{toldJokes.length}</span></h2>
-        {toldJokes.map(joke => {
+        {toldJokes.map(jokeObj => {
             return (
-            <div className="joke-list-container" key={joke.id}> 
-              <ul className="jokes" >
-                <li className="joke-list-item">{joke.text}
-                  <button onClick={()=>handleDeletionJoke(joke)}>🚮</button>
-                  <button onClick={()=>handleJokeChange(joke)}>🤫</button>
-                  </li>
-              </ul>
-            </div>
-          )
+              <ToldJokes key={jokeObj.id} joke={jokeObj} handleJokeChange={handleJokeChange} handleDeletionJoke={handleDeletionJoke}/>
+            )
         })}
         </div>
-
-    
   </div>
 </div>
 )

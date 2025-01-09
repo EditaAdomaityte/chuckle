@@ -1,14 +1,9 @@
 {
   "jokes": [
     {
-      "id": 2,
-      "text": "I always find elevator jokes to be uplifting.",
-      "told": false
-    },
-    {
       "id": 6,
       "text": "I used to have a handle on life, but then it broke.",
-      "told": false
+      "told": true
     },
     {
       "id": 7,
@@ -59,6 +54,11 @@
       "id": 16,
       "text": "The easiest time to add insult to injury is when you're signing someone's cast.",
       "told": true
+    },
+    {
+      "id": 17,
+      "text": "1323",
+      "told": false
     }
   ]
 }
